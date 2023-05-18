@@ -1,9 +1,11 @@
 import {Link} from 'react-router-dom';
 import logo from '../../../../assets/logo.png';
+import {useContext} from 'react';
+import {AuthContext} from '../../../Providers/AuthProvider';
 
 const NavBar = () => {
-    // const {user, loading} = 
-    const user = 'jamil';
+    const {user, logOutUser} = useContext(AuthContext);
+
     const navItems = <>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Home</Link></li>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>About</Link></li>
@@ -11,12 +13,20 @@ const NavBar = () => {
         {
             user?.email ?
                 <>
-                    <li><Link className='text-xl' to='/'>Orders</Link></li>
+                    <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Orders</Link></li>
                 </>
                 :
                 ''
         }
     </>
+
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
+
 
     return (
         <div className="bg-[#DCE2CB]">
@@ -43,7 +53,7 @@ const NavBar = () => {
                     {
                         user?.email ?
                             <>
-                                <button className='btn bg-[#0B2F20]'>Log out</button>
+                                <button title={user.displayName} onClick={handleLogOut} className='btn bg-[#0B2F20]'>Log out</button>
                             </>
                             :
                             <Link className='btn bg-[#0B2F20]' to='/user/login'>Login</Link>
