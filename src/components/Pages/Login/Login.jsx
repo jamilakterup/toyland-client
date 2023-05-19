@@ -27,6 +27,7 @@ const Login = () => {
                     <img src={frame} alt="" />
                 </div>
                 <div className="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 md:w-1/2">
+                    <h3 className="text-center text-3xl font-bold mt-3 text-[#0B2F20]">Login</h3>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -46,7 +47,7 @@ const Login = () => {
                         <div className="form-control mt-5">
                             <button type="submit" className="btn bg-[#0B2F20]">Login</button>
                             <label className="label mt-4">
-                                <p className="label-text-alt">New to this site? <Link className="link link-hover" to='/user/register'>Register</Link></p>
+                                <p className="label-text-alt">New to toyland? <Link className="link link-hover" to='/user/register'>Register</Link></p>
                             </label>
                         </div>
                     </form>

@@ -10,10 +10,12 @@ const NavBar = () => {
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Home</Link></li>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>About</Link></li>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Blog</Link></li>
+        <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>All Toys</Link></li>
         {
             user?.email ?
                 <>
-                    <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Orders</Link></li>
+                    <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>My Toys</Link></li>
+                    <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Add A Toy</Link></li>
                 </>
                 :
                 ''
@@ -53,10 +55,18 @@ const NavBar = () => {
                     {
                         user?.email ?
                             <>
+                                <div className="avatar online me-3">
+                                    <div className="w-12 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </div>
                                 <button title={user.displayName} onClick={handleLogOut} className='btn bg-[#0B2F20]'>Log out</button>
                             </>
                             :
-                            <Link className='btn bg-[#0B2F20]' to='/user/login'>Login</Link>
+                            <>
+                                <Link className='btn btn-outline me-3' to='/user/login'>Login</Link>
+                                <Link className='btn bg-[#0B2F20]' to='/user/register'>Sign up</Link>
+                            </>
                     }
                     {/* <a className="btn bg-[#406147]">Get started</a> */}
                 </div>

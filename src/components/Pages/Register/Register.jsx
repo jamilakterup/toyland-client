@@ -3,6 +3,7 @@ import frame from '../../../assets/Frame.png';
 import {useContext} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {updateProfile} from "firebase/auth";
+import SocialMedia from "./SocialMedia";
 
 const Register = () => {
     const {signUpUser} = useContext(AuthContext)
@@ -48,6 +49,7 @@ const Register = () => {
                     <img src={frame} alt="" />
                 </div>
                 <div className="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 md:w-1/2">
+                    <h3 className="text-center text-3xl font-bold mt-3 text-[#0B2F20]">Register</h3>
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -78,11 +80,15 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-5">
                             <button type="submit" className="btn bg-[#0B2F20]">Register</button>
-                            <label className="label mt-4">
-                                <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/user/login'>Login</Link></p>
-                            </label>
                         </div>
                     </form>
+                    <div className="form-control">
+                        <p className="divider">or</p>
+                        <SocialMedia />
+                        <label className="label my-4 ms-10">
+                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/user/login'>Login</Link></p>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
