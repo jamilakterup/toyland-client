@@ -1,11 +1,14 @@
 import {Link} from "react-router-dom";
 import frame from '../../../assets/Frame.png';
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {updateProfile} from "firebase/auth";
 import SocialMedia from "./SocialMedia";
+import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
 
 const Register = () => {
+    const [pass, setPass] = useState(false);
+    const [confirm, setConfirm] = useState(false);
     const {signUpUser} = useContext(AuthContext)
 
     const handleRegister = e => {
@@ -65,15 +68,26 @@ const Register = () => {
                             </label>
                             <input type="url" name="pic" placeholder="Photo url" className="input input-bordered" />
                         </div>
-                        <div className="form-control">
+                        {/* <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input type={pass ? 'text' : 'password'} name="password" placeholder="password" className="input input-bordered" required />
+                            <button className="absolute right-2 bottom-12" onClick={() => setPass(!pass)}>{pass ? <FaRegEye /> : <FaRegEyeSlash />}</button>
+                        </div> */}
+                        <div className="form-control relative">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input type={confirm ? 'text' : 'password'} name="password" placeholder="password" className="input input-bordered" required />
+                            <button className="absolute right-2 bottom-4" onClick={() => setConfirm(!confirm)}>{confirm ? <FaRegEye /> : <FaRegEyeSlash />}</button>
+                        </div>
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Confirm Password</span>
                             </label>
-                            <input type="password" name="confirm" placeholder="Confirm password" className="input input-bordered" required />
+                            <input type={pass ? 'text' : 'password'} name="confirm" placeholder="Confirm password" className="input input-bordered" required />
+                            <button className="absolute right-2 bottom-12" onClick={() => setPass(!pass)}>{pass ? <FaRegEye /> : <FaRegEyeSlash />}</button>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

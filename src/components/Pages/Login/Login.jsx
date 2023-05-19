@@ -1,9 +1,11 @@
 import {Link} from "react-router-dom";
 import frame from '../../../assets/Frame.png';
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
+import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
 
 const Login = () => {
+    const [pass, setPass] = useState(false);
     const {signInUser} = useContext(AuthContext)
 
     const handleLogin = e => {
@@ -35,11 +37,12 @@ const Login = () => {
                             </label>
                             <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input type={pass ? 'text' : 'password'} name="password" placeholder="password" className="input input-bordered" required />
+                            <button className="absolute right-2 bottom-12" onClick={() => setPass(!pass)}>{pass ? <FaRegEye /> : <FaRegEyeSlash />}</button>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
