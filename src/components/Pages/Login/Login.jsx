@@ -1,12 +1,18 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import frame from '../../../assets/Frame.png';
 import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
+import toast from "react-hot-toast";
+
+
 
 const Login = () => {
     const [pass, setPass] = useState(false);
-    const {signInUser} = useContext(AuthContext)
+    const {signInUser} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = e => {
         e.preventDefault();
@@ -17,7 +23,11 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                console.log(loggedUser.email);
+                if (loggedUser.email) {
+                    toast.success('Login Successful!')
+                }
+                navigate(from, {replace: true})
             })
             .catch(err => console.log(err))
     }

@@ -1,15 +1,19 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import frame from '../../../assets/Frame.png';
 import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {updateProfile} from "firebase/auth";
 import SocialMedia from "./SocialMedia";
 import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
+import toast from "react-hot-toast";
 
 const Register = () => {
     const [pass, setPass] = useState(false);
     const [confirm, setConfirm] = useState(false);
-    const {signUpUser} = useContext(AuthContext)
+    const {signUpUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleRegister = e => {
         e.preventDefault();
@@ -40,7 +44,8 @@ const Register = () => {
             photoURL: pic
         })
             .then(() => {
-                console.log('updated profile');
+                toast.success('User sign up Successful!');
+                navigate(from, {replace: true})
             })
             .catch(err => console.log(err));
     }
@@ -68,13 +73,6 @@ const Register = () => {
                             </label>
                             <input type="url" name="pic" placeholder="Photo url" className="input input-bordered" />
                         </div>
-                        {/* <div className="form-control relative">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type={pass ? 'text' : 'password'} name="password" placeholder="password" className="input input-bordered" required />
-                            <button className="absolute right-2 bottom-12" onClick={() => setPass(!pass)}>{pass ? <FaRegEye /> : <FaRegEyeSlash />}</button>
-                        </div> */}
                         <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
