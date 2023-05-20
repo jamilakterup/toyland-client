@@ -8,14 +8,13 @@ const NavBar = () => {
 
     const navItems = <>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Home</Link></li>
-        <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>About</Link></li>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Blog</Link></li>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>All Toys</Link></li>
         {
             user?.email ?
                 <>
                     <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>My Toys</Link></li>
-                    <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Add A Toy</Link></li>
+                    <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/add-toy'>Add A Toy</Link></li>
                 </>
                 :
                 ''

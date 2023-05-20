@@ -98,7 +98,7 @@ const Register = () => {
                         <p className="divider">or</p>
                         <SocialMedia />
                         <label className="label my-4 ms-10">
-                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/user/login'>Login</Link></p>
+                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/login'>Login</Link></p>
                         </label>
                     </div>
                 </div>

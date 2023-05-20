@@ -5,56 +5,43 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [category, setCategory] = useState('vintage');
-
-    // const {register, handleSubmit} = useForm();
-    // const onSubmit = data => console.log(data);
+    const [activeTab, setActiveTab] = useState('cargo');
+    const [activeButton, setActiveButton] = useState(1);
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toys/${category}`)
+        fetch(`http://localhost:5000/toys/${activeTab}`)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [category])
-
-    const [activeButton, setActiveButton] = useState(1);
+    }, [activeTab])
 
     const handleButtonClick = (buttonId) => {
         setActiveButton(buttonId);
-        if (buttonId === 1) {
-            setCategory('vintage')
-        }
-        if (buttonId === 2) {
-            setCategory('remote controlled')
-        }
-        if (buttonId === 3) {
-            setCategory('electric')
-        }
     };
-    console.log(category);
+
 
     return (
         <section className="my-24 container mx-auto">
             <div>
-                <h1 className="text-center font-bold text-5xl my-12">Toys Category </h1>
+                <h1 className="text-center font-bold text-5xl my-12">Shop by category</h1>
             </div>
 
             <div className="flex justify-center mb-12">
                 <div>
                     <button className={`py-1 px-4 font-semibold ${activeButton === 1 ? 'bg-[#0B2F20] text-white' : 'bg-[#DCE2CB]'}`}
-                        onClick={() => handleButtonClick(1)}
+                        onClick={() => handleButtonClick(1, setActiveTab('cargo'))}
                     >
-                        Vintage
+                        Cargo
                     </button>
                     <button className={`py-1 px-4 font-semibold ${activeButton === 2 ? 'bg-[#0B2F20] text-white' : 'bg-[#DCE2CB]'}`}
-                        onClick={() => handleButtonClick(2)}
+                        onClick={() => handleButtonClick(2, setActiveTab('fighter'))}
                     >
-                        Remote Controlled
+                        Fighter
                     </button>
                     <button className={`py-1 px-4 font-semibold ${activeButton === 3 ? 'bg-[#0B2F20] text-white' : 'bg-[#DCE2CB]'}`}
-                        onClick={() => handleButtonClick(3)}
+                        onClick={() => handleButtonClick(3, setActiveTab('Boeing'))}
                     >
-                        Electric
+                        Boeing
                     </button>
                 </div>
             </div>
