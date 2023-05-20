@@ -7,7 +7,7 @@ const ProductCard = ({product}) => {
             <div className="card-body">
                 <h2 className="card-title">{toyName}</h2>
                 <div className="flex">
-                    <p>Price: {price}</p>
+                    <p>Price: $ {price}</p>
                     <p>Ratings: {ratings}</p>
                 </div>
                 <div className="card-actions justify-end">

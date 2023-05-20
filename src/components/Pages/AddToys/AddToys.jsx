@@ -2,14 +2,34 @@ import {useContext} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {useForm} from "react-hook-form";
 import gif from '../../../assets/gif.gif';
+import toast from "react-hot-toast";
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
-    console.log(user);
 
 
     const {register, handleSubmit} = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+
+        fetch('http://localhost:5000/toys', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Toy Added Successful!')
+                }
+                console.log(data)
+            })
+
+    };
+
+
+
 
     return (
         <>
@@ -17,29 +37,26 @@ const AddToys = () => {
             <div className="flex flex-col-reverse md:flex-row container mx-auto mb-20">
                 <form className="w-full md:w-2/3" onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex gap-6 my-6">
-                        <input className="input input-bordered w-full" placeholder="toy name" {...register("name")} required />
-                        <input className="input input-bordered w-full"  {...register("email", {required: true})} defaultValue={user?.email} />
+                        <input className="input input-bordered w-full" placeholder="toy name" {...register("toyName")} />
+                        <input className="input input-bordered w-full"  {...register("email", {required: true})} defaultValue={user?.email} readOnly />
                     </div>
                     <div className="flex gap-6 my-6">
-                        <input className="input input-bordered w-full" placeholder="toy category"{...register("category")} required />
-                        <input className="input input-bordered w-full"  {...register("subcategory", {required: true})} placeholder="sub-category" required />
-                    </div>
-                    <div className="flex gap-6 my-6">
-                        <select className="input input-bordered w-full" {...register("gender")}>
+                        <select className="input input-bordered w-full" {...register("subcategory")}>
                             <option value="cargo">Cargo</option>
                             <option value="Boeing">Boeing</option>
                             <option value="fighter">Fighter</option>
                         </select>
-                        <input className="input input-bordered w-full"  {...register("ratings", {required: true})} placeholder="ratings" required />
+                        <input className="input input-bordered w-full"  {...register("ratings", {required: true})} placeholder="ratings" />
                     </div>
                     <div className="flex gap-6 my-6">
-                        <input type="url" className="input input-bordered w-full" placeholder="img url" {...register("img")} required />
-                        <input className="input input-bordered w-full"  {...register("availableQuantity", {required: true})} placeholder="quantity" required />
+                        <input className="input input-bordered w-full" placeholder="price" {...register("price")} />
+                        <input className="input input-bordered w-full"  {...register("availableQuantity", {required: true})} placeholder="quantity" />
                     </div>
                     <div className="flex gap-6 my-6">
+                        <input type="url" className="input input-bordered w-full" placeholder="img url" {...register("img")} />
                         <input className="input input-bordered w-full" placeholder="Seller name" {...register("seller")} />
-                        <textarea className="input input-bordered w-full " name="" id="" cols="30" rows="10" {...register("description")}></textarea>
                     </div>
+                    <textarea className="input input-bordered w-full " name="" id="" cols="30" rows='30' {...register("description")}></textarea>
                     <br />
                     <input className="btn w-full bg-[#0B2F20]" type="submit" />
                 </form>
