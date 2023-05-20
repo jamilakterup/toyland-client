@@ -57,15 +57,15 @@ const NavBar = () => {
                             <>
                                 <div className="avatar online me-3">
                                     <div className="w-12 rounded-full">
-                                        <img src={user.photoURL} />
+                                        <img title={user.displayName} src={user.photoURL} />
                                     </div>
                                 </div>
-                                <button title={user.displayName} onClick={handleLogOut} className='btn bg-[#0B2F20]'>Log out</button>
+                                <button onClick={handleLogOut} className='btn bg-[#0B2F20]'>Log out</button>
                             </>
                             :
                             <>
-                                <Link className='btn btn-outline me-3' to='/user/login'>Login</Link>
-                                <Link className='btn bg-[#0B2F20]' to='/user/register'>Sign up</Link>
+                                <Link className='btn btn-outline me-3' to='/login'>Login</Link>
+                                <Link className='btn bg-[#0B2F20]' to='/register'>Sign up</Link>
                             </>
                     }
                     {/* <a className="btn bg-[#406147]">Get started</a> */}

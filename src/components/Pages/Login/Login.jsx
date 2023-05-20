@@ -60,7 +60,7 @@ const Login = () => {
                         <div className="form-control mt-5">
                             <button type="submit" className="btn bg-[#0B2F20]">Login</button>
                             <label className="label mt-4">
-                                <p className="label-text-alt">New to toyland? <Link className="link link-hover" to='/user/register'>Register</Link></p>
+                                <p className="label-text-alt">New to toyland? <Link className="link link-hover" to='/register'>Register</Link></p>
                             </label>
                         </div>
                     </form>
