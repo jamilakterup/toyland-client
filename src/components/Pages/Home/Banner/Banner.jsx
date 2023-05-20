@@ -9,7 +9,7 @@ const Banner = () => {
                     <h1 className='text-4xl md:text-7xl font-bold md:text-justify text-center text-[#0B2F20]'>A new box of toy <br /> every month</h1>
                     <p className='my-6 text-xl text-[#0B2F20]'>
                         We {"don't"} just deliver toys, We deliver happiness to our children</p>
-                    <Link className='btn btn-wide bg-[#0B2F20]' to='/collection'>My Toys collection</Link>
+                    <Link className='btn btn-wide bg-[#0B2F20]' to='/my-toys'>My Toys</Link>
                 </div>
             </div>
             <div className="md:w-1/2 flex md:justify-end justify-center">
