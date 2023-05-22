@@ -64,7 +64,7 @@ const NavBar = () => {
                             :
                             <>
                                 <Link className='btn btn-outline me-3' to='/login'>Login</Link>
-                                <Link className='btn bg-[#0B2F20]' to='/register'>Sign up</Link>
+                                <Link className='btn bg-[#0B2F20]' to='/register'>Register</Link>
                             </>
                     }
                     {/* <a className="btn bg-[#406147]">Get started</a> */}

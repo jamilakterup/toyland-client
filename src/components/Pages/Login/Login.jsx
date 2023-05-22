@@ -5,12 +5,14 @@ import {AuthContext} from "../../Providers/AuthProvider";
 import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
 import toast from "react-hot-toast";
 import SocialMedia from "../Register/SocialMedia";
+import useTitle from "../../../Hooks/useTitle";
 
 
 
 const Login = () => {
     const [pass, setPass] = useState(false);
     const {signInUser} = useContext(AuthContext);
+    useTitle('Toyland-Login')
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';

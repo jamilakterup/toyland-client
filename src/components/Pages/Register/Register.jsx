@@ -5,10 +5,12 @@ import {AuthContext} from "../../Providers/AuthProvider";
 import {updateProfile} from "firebase/auth";
 import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
 import toast from "react-hot-toast";
+import useTitle from "../../../Hooks/useTitle";
 
 const Register = () => {
     const [pass, setPass] = useState(false);
     const [confirm, setConfirm] = useState(false);
+    useTitle('Toyland-register')
     const {signUpUser} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();

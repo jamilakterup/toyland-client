@@ -4,10 +4,12 @@ import {AuthContext} from "../../Providers/AuthProvider";
 import MyToyDetails from "./MyToyDetails";
 import Swal from "sweetalert2";
 import {useForm} from "react-hook-form";
+import useTitle from "../../../Hooks/useTitle";
 
 const MyToys = () => {
     const {user} = useContext(AuthContext);
     const [toys, setToys] = useState([]);
+    useTitle('Toyland-My Toys')
 
     useEffect(() => {
         fetch(`http://localhost:5000/myToys/${user?.email}`)

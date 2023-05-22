@@ -3,9 +3,11 @@ import {AuthContext} from "../../Providers/AuthProvider";
 import {useForm} from "react-hook-form";
 import gif from '../../../assets/gif.gif';
 import toast from "react-hot-toast";
+import useTitle from "../../../Hooks/useTitle";
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
+    useTitle('Toyland-Add A Toy')
 
 
     const {register, handleSubmit} = useForm();

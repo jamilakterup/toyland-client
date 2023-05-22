@@ -13,8 +13,8 @@ const Gallery = () => {
             <Swiper
                 spaceBetween={50}
                 slidesPerView={3}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log('slide change')}
+            // onSwiper={(swiper) => console.log(swiper)}
             >
                 <SwiperSlide><img className='h-[300px]' src={img1} alt="" /></SwiperSlide>
                 <SwiperSlide><img className='h-[300px]' src={img3} alt="" /></SwiperSlide>
