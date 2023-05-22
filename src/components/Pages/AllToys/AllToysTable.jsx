@@ -1,6 +1,15 @@
+import ToyModal from "./ToyModal";
+
 
 const AllToysTable = ({toy, i}) => {
     const {toyName, subcategory, price, availableQuantity, seller} = toy;
+
+    // const handleDetails = (toy) => {
+    //     // const {toyName, price, availableQuantity, seller, img, email, ratings, _id} = toy;
+    //     console.log(toy);
+    // }
+
+
     return (
         <tr>
             <th>{i + 1}</th>
@@ -9,9 +18,9 @@ const AllToysTable = ({toy, i}) => {
             <td>{subcategory}</td>
             <td>$ {price}</td>
             <td>{availableQuantity}</td>
-            <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-            </th>
+            <td>
+                <ToyModal toy={toy} />
+            </td>
         </tr>
     );
 };

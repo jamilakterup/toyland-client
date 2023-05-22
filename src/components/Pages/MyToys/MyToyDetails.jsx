@@ -1,20 +1,20 @@
 
-const MyToyDetails = ({toy, i}) => {
+const MyToyDetails = ({toy, i, handleDelete}) => {
     const {_id, toyName, category, subcategory, price, availableQuantity, seller, img} = toy;
 
 
-    const handleDelete = id => {
-        fetch(`http://localhost:5000/toys/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
-    }
+    // const handleDelete = id => {
+    //     fetch(`http://localhost:5000/toys/${id}`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //         })
+    // }
 
     return (
         <tr>

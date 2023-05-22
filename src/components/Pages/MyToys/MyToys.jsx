@@ -11,6 +11,24 @@ const MyToys = () => {
             .then(res => res.json())
             .then(data => setToys(data))
     }, [user])
+
+    const handleDelete = id => {
+        fetch(`http://localhost:5000/toys/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    const remaining = toys.filter(toy => toy._id !== id);
+                    setToys(remaining);
+                }
+            })
+    }
+
     return (
         <>
             <h1 className="text-5xl text-center mt-12">My Toys</h1>
@@ -35,6 +53,7 @@ const MyToys = () => {
                                 key={toy._id}
                                 i={i}
                                 toy={toy}
+                                handleDelete={handleDelete}
                             />)
                         }
                     </tbody>
