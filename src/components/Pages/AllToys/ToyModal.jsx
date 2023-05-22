@@ -1,30 +1,35 @@
+import {Link, useLoaderData} from "react-router-dom";
 
 
-const ToyModal = ({toy}) => {
-    console.log(toy);
-    const {toyName, price, availableQuantity, seller, img, email, ratings} = toy;
+const ToyModal = () => {
+    const toy = useLoaderData();
+
     return (
         <>
-            <label htmlFor="my-modal" className="btn">open</label>
-            <input type="checkbox" id="my-modal" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg text-center">{toyName}</h3>
-                    <img className="w-1/2 mx-auto" src={img} alt="" />
-                    <div className="flex items-center gap-40">
-                        <p className="py-4 font-bold">Price: $ {price}</p>
-                        <p> Available: {availableQuantity}</p>
+            {
+                toy.map(t => <div key={t._id} className="container mx-auto flex justify-center my-20">
+                    <div className="card w-1/2 glass">
+                        <figure><img src={t.img} alt="car!" /></figure>
+                        <div className="card-body">
+                            <h2 className="text-4xl font-bold text-center">{t.toyName}</h2>
+                            <div className="flex items-center gap-40">
+                                <p className="py-4 font-bold">Price: $ {t.price}</p>
+                                <p> Available: {t.availableQuantity}</p>
+                            </div>
+                            <p>Seller: {t.seller}</p>
+                            <div className="flex items-center gap-28 mb-5">
+                                <p> Ratings: {t.ratings}</p>
+                                <p> E-mail: {t.email}</p>
+                            </div>
+                            <p className="mb-5">{t.description}</p>
+                            <div className="card-actions justify-end">
+                                <Link className="btn btn-wide btn-outline" to='/all-toys'>Go back</Link>
+                                <Link className="btn btn-wide bg-[#0B2F20]" to='/all-toys'>Confirm order</Link>
+                            </div>
+                        </div>
                     </div>
-                    <p className="py-4">Seller: {seller}</p>
-                    <div className="flex items-center gap-28">
-                        <p> Ratings: {ratings}</p>
-                        <p> Email: {email}</p>
-                    </div>
-                    <div className="modal-action">
-                        <label htmlFor="my-modal" className="btn">{'_id'}</label>
-                    </div>
-                </div>
-            </div>
+                </div>)
+            }
         </>
     );
 };

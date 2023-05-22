@@ -10,6 +10,7 @@ import PrivetRoute from "./PrivetRoute";
 import AddToys from "../Pages/AddToys/AddToys";
 import AllToys from "../Pages/AllToys/AllToys";
 import MyToys from "../Pages/MyToys/MyToys";
+import ToyModal from "../Pages/AllToys/ToyModal";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
             {
                 path: 'my-toys',
                 element: <PrivetRoute><MyToys /></PrivetRoute>
+            },
+            {
+                path: 'modal/:id',
+                element: <ToyModal />,
+                loader: ({params}) => fetch(`http://localhost:5000/getToys/${params.id}`)
             }
         ]
     }

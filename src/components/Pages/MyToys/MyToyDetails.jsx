@@ -2,20 +2,6 @@
 const MyToyDetails = ({toy, i, handleDelete}) => {
     const {_id, toyName, category, subcategory, price, availableQuantity, seller, img} = toy;
 
-
-    // const handleDelete = id => {
-    //     fetch(`http://localhost:5000/toys/${id}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //         })
-    // }
-
     return (
         <tr>
             <th>{i + 1}</th>
@@ -37,7 +23,7 @@ const MyToyDetails = ({toy, i, handleDelete}) => {
             <td>$ {price}</td>
             <td>{availableQuantity}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <button className="btn btn-ghost btn-xs">Update</button>
                 <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs hover:bg-red-400 hover:text-white">delete</button>
             </th>
         </tr>

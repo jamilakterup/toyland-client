@@ -1,8 +1,8 @@
-import ToyModal from "./ToyModal";
+import {Link} from "react-router-dom";
 
 
 const AllToysTable = ({toy, i}) => {
-    const {toyName, subcategory, price, availableQuantity, seller} = toy;
+    const {toyName, subcategory, price, availableQuantity, seller, _id} = toy;
 
     // const handleDetails = (toy) => {
     //     // const {toyName, price, availableQuantity, seller, img, email, ratings, _id} = toy;
@@ -19,7 +19,7 @@ const AllToysTable = ({toy, i}) => {
             <td>$ {price}</td>
             <td>{availableQuantity}</td>
             <td>
-                <ToyModal toy={toy} />
+                <Link className="btn btn-ghost btn-xs" to={`/modal/${_id}`}>Details</Link>
             </td>
         </tr>
     );
