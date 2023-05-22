@@ -8,7 +8,7 @@ const AllToys = () => {
     useTitle('Toyland-All Toys');
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toyland-server-red.vercel.app/toys')
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -16,7 +16,7 @@ const AllToys = () => {
     }, [])
 
     const handleSearch = () => {
-        fetch(`http://localhost:5000/toySearch/${searchText}`)
+        fetch(`https://toyland-server-red.vercel.app/toySearch/${searchText}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }

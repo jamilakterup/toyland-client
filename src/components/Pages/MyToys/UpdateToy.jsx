@@ -9,7 +9,7 @@ const UpdateToy = () => {
     const {register, handleSubmit} = useForm();
     const onSubmit = data => {
         console.log(data);
-        fetch(`http://localhost:5000/update/${data._id}`, {
+        fetch(`https://toyland-server-red.vercel.app/update/${data._id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json"

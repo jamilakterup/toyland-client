@@ -12,7 +12,7 @@ const MyToys = () => {
     useTitle('Toyland-My Toys')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys/${user?.email}`)
+        fetch(`https://toyland-server-red.vercel.app/myToys/${user?.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [user])
@@ -20,7 +20,7 @@ const MyToys = () => {
 
     const {register, handleSubmit} = useForm();
     const onSubmit = data => {
-        fetch(`http://localhost:5000/sortMyToy/${data?.sortName}`)
+        fetch(`https://toyland-server-red.vercel.app/sortMyToy/${data?.sortName}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -39,7 +39,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/toys/${id}`, {
+                fetch(`https://toyland-server-red.vercel.app/toys/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json'

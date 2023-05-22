@@ -54,12 +54,12 @@ const router = createBrowserRouter([
             {
                 path: 'modal/:id',
                 element: <ToyModal />,
-                loader: ({params}) => fetch(`http://localhost:5000/getToys/${params.id}`)
+                loader: ({params}) => fetch(`https://toyland-server-red.vercel.app/getToys/${params.id}`)
             },
             {
                 path: 'update/:id',
                 element: <UpdateToy />,
-                loader: ({params}) => fetch(`http://localhost:5000/getToys/${params.id}`)
+                loader: ({params}) => fetch(`https://toyland-server-red.vercel.app/getToys/${params.id}`)
             }
         ]
     }

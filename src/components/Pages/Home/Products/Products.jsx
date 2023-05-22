@@ -10,7 +10,7 @@ const Products = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toys/${activeTab}`)
+        fetch(`https://toyland-server-red.vercel.app/toys/${activeTab}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [activeTab])

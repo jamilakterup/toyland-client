@@ -13,7 +13,7 @@ const AddToys = () => {
     const {register, handleSubmit} = useForm();
     const onSubmit = data => {
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://toyland-server-red.vercel.app/toys', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
