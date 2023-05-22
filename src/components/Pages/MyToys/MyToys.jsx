@@ -1,7 +1,9 @@
 import {useContext, useEffect, useState} from "react";
+// import {useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import MyToyDetails from "./MyToyDetails";
 import Swal from "sweetalert2";
+import {useForm} from "react-hook-form";
 
 const MyToys = () => {
     const {user} = useContext(AuthContext);
@@ -12,6 +14,17 @@ const MyToys = () => {
             .then(res => res.json())
             .then(data => setToys(data))
     }, [user])
+
+
+    const {register, handleSubmit} = useForm();
+    const onSubmit = data => {
+        fetch(`http://localhost:5000/sortMyToy/${data?.sortName}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setToys(data)
+            })
+    };
 
     const handleDelete = id => {
         Swal.fire({
@@ -50,6 +63,13 @@ const MyToys = () => {
     return (
         <>
             <h1 className="text-5xl text-center mt-12">My Toys</h1>
+            <form className="flex justify-end container mx-auto" onChange={handleSubmit(onSubmit)}>
+                <select className="input input-bordered w-2/6"  {...register("sortName")}>
+                    <option >Sort by Price</option>
+                    <option value="ascending">ascending</option>
+                    <option value="descending">descending</option>
+                </select>
+            </form>
             <div className="container mx-auto my-12">
                 <table className="table w-full">
                     {/* head */}
