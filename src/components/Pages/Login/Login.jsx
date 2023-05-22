@@ -4,6 +4,7 @@ import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
 import toast from "react-hot-toast";
+import SocialMedia from "../Register/SocialMedia";
 
 
 
@@ -64,6 +65,13 @@ const Login = () => {
                             </label>
                         </div>
                     </form>
+                    <div className="form-control">
+                        <p className="divider">or</p>
+                        <SocialMedia />
+                        <label className="label my-4 ms-10">
+                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/login'>Login</Link></p>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,9 +1,8 @@
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import frame from '../../../assets/Frame.png';
 import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import {updateProfile} from "firebase/auth";
-import SocialMedia from "./SocialMedia";
 import {FaRegEye, FaRegEyeSlash} from 'react-icons/fa';
 import toast from "react-hot-toast";
 
@@ -94,13 +93,7 @@ const Register = () => {
                             <button type="submit" className="btn bg-[#0B2F20]">Register</button>
                         </div>
                     </form>
-                    <div className="form-control">
-                        <p className="divider">or</p>
-                        <SocialMedia />
-                        <label className="label my-4 ms-10">
-                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/login'>Login</Link></p>
-                        </label>
-                    </div>
+
                 </div>
             </div>
         </div>

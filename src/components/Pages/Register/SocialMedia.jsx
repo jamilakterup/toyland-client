@@ -2,15 +2,25 @@ import {FaGithub} from 'react-icons/fa';
 import google from '../../../assets/Google.png';
 import {useContext} from 'react';
 import {AuthContext} from '../../Providers/AuthProvider';
+import toast from "react-hot-toast";
+import {useLocation, useNavigate} from 'react-router-dom';
+
 
 const SocialMedia = () => {
     const {googleSIgnIn, githubSignIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleLogin = () => {
         googleSIgnIn()
             .then(result => {
                 const googleUser = result.user;
                 console.log(googleUser);
+                if (googleUser.email) {
+                    toast.success('Login Successful!')
+                    navigate(from, {replace: true})
+                }
             })
             .catch(err => console.log(err))
     }
