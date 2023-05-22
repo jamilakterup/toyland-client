@@ -8,7 +8,7 @@ const NavBar = () => {
 
     const navItems = <>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Home</Link></li>
-        <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/'>Blog</Link></li>
+        <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/blog'>Blog</Link></li>
         <li><Link className='text-xl text-[#0B2F20] font-semibold' to='/all-toys'>All Toys</Link></li>
         {
             user?.email ?

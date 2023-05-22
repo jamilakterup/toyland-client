@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 
 const MyToyDetails = ({toy, i, handleDelete}) => {
     const {_id, toyName, category, subcategory, price, availableQuantity, seller, img} = toy;
@@ -23,7 +24,8 @@ const MyToyDetails = ({toy, i, handleDelete}) => {
             <td>$ {price}</td>
             <td>{availableQuantity}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">Update</button>
+                <Link className="btn btn-ghost btn-xs" to={`/update/${_id}`}>Update</Link>
+                {/* <button  className="btn btn-ghost btn-xs">Update</button> */}
                 <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs hover:bg-red-400 hover:text-white">delete</button>
             </th>
         </tr>

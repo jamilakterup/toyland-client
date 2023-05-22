@@ -5,12 +5,12 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import About from "../Pages/About/About";
 import Blog from "../Pages/Blog/Blog";
-import Collection from "../Pages/Collection/Collection";
 import PrivetRoute from "./PrivetRoute";
 import AddToys from "../Pages/AddToys/AddToys";
 import AllToys from "../Pages/AllToys/AllToys";
 import MyToys from "../Pages/MyToys/MyToys";
 import ToyModal from "../Pages/AllToys/ToyModal";
+import UpdateToy from "../Pages/MyToys/UpdateToy";
 
 const router = createBrowserRouter([
     {
@@ -28,10 +28,6 @@ const router = createBrowserRouter([
             {
                 path: 'blog',
                 element: <Blog />
-            },
-            {
-                path: 'collection',
-                element: <PrivetRoute><Collection /></PrivetRoute>
             },
             {
                 path: 'login',
@@ -56,6 +52,11 @@ const router = createBrowserRouter([
             {
                 path: 'modal/:id',
                 element: <ToyModal />,
+                loader: ({params}) => fetch(`http://localhost:5000/getToys/${params.id}`)
+            },
+            {
+                path: 'update/:id',
+                element: <UpdateToy />,
                 loader: ({params}) => fetch(`http://localhost:5000/getToys/${params.id}`)
             }
         ]
