@@ -18,7 +18,7 @@ const Extra = () => {
                     <img className='md:w-[230px] md:h-[200px] w-full' src={img1} alt="" />
                     <p>{"Don't"} miss this wonderful opportunity. show all toys and select your one!! </p>
                     <div className="card-actions justify-end">
-                        <Link className='btn bg-[#0B2F20]'>All toy</Link>
+                        <Link to='/all-toys' className='btn bg-[#0B2F20]'>All toy</Link>
                     </div>
                 </div>
             </div>

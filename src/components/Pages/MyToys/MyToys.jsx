@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import MyToyDetails from "./MyToyDetails";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
     const {user} = useContext(AuthContext);
@@ -13,20 +14,37 @@ const MyToys = () => {
     }, [user])
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/toys/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/toys/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        if (data.deletedCount > 0) {
+                            const remaining = toys.filter(toy => toy._id !== id);
+                            setToys(remaining);
+                        }
+                    })
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    const remaining = toys.filter(toy => toy._id !== id);
-                    setToys(remaining);
-                }
-            })
     }
 
     return (
