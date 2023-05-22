@@ -1,4 +1,4 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import frame from '../../../assets/Frame.png';
 import {useContext, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
@@ -23,8 +23,12 @@ const Register = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
 
+        if (password.length < 6) {
+            toast.error('Use at-list 6 characters');
+        }
+
         if (password !== confirm) {
-            alert("Please enter your password")
+            toast.error("Please enter same password")
             return;
         }
 
@@ -34,7 +38,9 @@ const Register = () => {
                 console.log(loggedUser);
                 updateUserProfile(result.user, name, pic)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     const updateUserProfile = (user, name, pic) => {
@@ -46,7 +52,10 @@ const Register = () => {
                 toast.success('User sign up Successful!');
                 navigate(from, {replace: true})
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err)
+                toast.error(err.message);
+            });
     }
 
     return (
@@ -76,7 +85,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type={confirm ? 'text' : 'password'} name="password" placeholder="password" className="input input-bordered" required />
+                            <input type={confirm ? 'text' : 'password'} name="password" placeholder="6 characters password" className="input input-bordered" required />
                             <button className="absolute right-2 bottom-4" onClick={() => setConfirm(!confirm)}>{confirm ? <FaRegEye /> : <FaRegEyeSlash />}</button>
                         </div>
                         <div className="form-control relative">
@@ -92,6 +101,9 @@ const Register = () => {
                         <div className="form-control mt-5">
                             <button type="submit" className="btn bg-[#0B2F20]">Register</button>
                         </div>
+                        <label className="label my-4 ms-10">
+                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/login'>Login</Link></p>
+                        </label>
                     </form>
 
                 </div>

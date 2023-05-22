@@ -60,18 +60,15 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-5">
                             <button type="submit" className="btn bg-[#0B2F20]">Login</button>
-                            <label className="label mt-4">
-                                <p className="label-text-alt">New to toyland? <Link className="link link-hover" to='/register'>Register</Link></p>
-                            </label>
                         </div>
-                    </form>
-                    <div className="form-control">
-                        <p className="divider">or</p>
-                        <SocialMedia />
-                        <label className="label my-4 ms-10">
-                            <p className="label-text-alt">Already have an account? <Link className="link link-hover" to='/login'>Login</Link></p>
+                        <div className="form-control">
+                            <p className="divider">or</p>
+                            <SocialMedia />
+                        </div>
+                        <label className="label mt-4">
+                            <p className="label-text-alt">New to toyland? <Link className="link link-hover" to='/register'>Register</Link></p>
                         </label>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

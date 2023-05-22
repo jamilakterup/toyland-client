@@ -23,7 +23,7 @@ const Products = () => {
     return (
         <section className="my-24 container mx-auto">
             <div>
-                <h1 className="text-center font-bold text-5xl my-12">Shop by category</h1>
+                <h1 className="text-center font-bold text-5xl my-12 text-[#0B2F20]">Shop by category</h1>
             </div>
 
             <div className="flex justify-center mb-12">
